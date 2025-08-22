@@ -36,8 +36,8 @@ http://www.sqlite.org/download.html
   vi Makefile
 
   ...
-  SQLITE_VERSION ?= 3160100
-  SQLITE_YEAR    ?= 2017
+  SQLITE_VERSION ?= 3050100
+  SQLITE_YEAR    ?= 2025
   ...
 ```
 
@@ -86,11 +86,17 @@ http://www.sqlite.org/download.html
 * You may now push SQLite to your Android device
 
 ```bash
-  adb push libs/armeabi/sqlite3-static /sdcard/sqlite3
+  adb push libs/arm64-v8a /sdcard/sqlite3
   adb shell
-  mv /sdcard/sqlite3 /data/local/
-  chmod 755 /data/local/sqlite3
-  /data/local/sqlite3 -help
+  mv /sdcard/sqlite3 /data/data/yor.package/sqlite3
+  chmod 755 /data/data/your.package/sqlite3/sqlite3-static
+  cd /data/data/your.package/sqlite3
+  ./sqlite3-static ../databases/XXXX.db
+  .timer ON
+  .tables
+  SELECT * FROM <table_name>;
+  .quit
+
 ```
 
 Note that paths and permissions may vary in your Android device or environment.
